@@ -31,10 +31,8 @@ const enableLoop = audio => {
   audio.load();
 };
 
-enableLoop(forest);
-enableLoop(zen);
-
 const startAudio = audio => {
+  enableLoop(audio);
   audio.play();
 };
 
@@ -56,17 +54,22 @@ const breathAnimation = () => {
 };
 
 theme.addEventListener("click", () => {
-  if (theme.className == "forest") {
-    theme.innerText = "Zen";
-    theme.className = "zen";
-    audioTheme = document.querySelector("#zen");
-    content.className = "content";
-  } else {
+  if (theme.className == "zen") {
     theme.innerText = "Forest";
     theme.className = "forest";
     audioTheme = document.querySelector("#forest");
     content.className = "content forest-bg";
     overlay.style.opacity = 0.2;
+  } else if (theme.className == "forest") {
+    theme.innerText = "Beach";
+    theme.className = "beach";
+    audioTheme = document.querySelector("#beach");
+    content.className = "content beach-bg";
+  } else {
+    theme.innerText = "Zen";
+    theme.className = "zen";
+    audioTheme = document.querySelector("#zen");
+    content.className = "content";
   }
 });
 
