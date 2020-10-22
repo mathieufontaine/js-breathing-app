@@ -2,7 +2,7 @@ const controller = document.querySelector(".controller");
 const pointerContainer = document.querySelector(".pointer-container");
 const text = document.querySelector(".text");
 const breathCount = document.querySelector(".breath-count");
-const btn = document.querySelector(".btn");
+const command = document.querySelector(".command");
 const title = document.querySelector(".title");
 const img = document.querySelector(".img");
 const timer = document.querySelector(".timer");
@@ -11,8 +11,7 @@ const seconds = document.querySelector(".seconds");
 const theme = document.querySelector("#theme");
 const content = document.querySelector(".content");
 const overlay = document.querySelector(".overlay");
-
-console.log(theme.className);
+const resume = document.querySelector(".resume");
 
 const totalTime = 11000;
 const breatheTime = (totalTime / 5) * 2;
@@ -55,35 +54,48 @@ const breathAnimation = () => {
 
 theme.addEventListener("click", () => {
   if (theme.className == "zen") {
-    theme.innerText = "Forest";
+    theme.innerHTML = "<span>Forest</span>";
     theme.className = "forest";
     audioTheme = document.querySelector("#forest");
     content.className = "content forest-bg";
     overlay.style.opacity = 0.2;
+    if (active == true) {
+      stopAudio(zen);
+      startAudio(audioTheme);
+    }
   } else if (theme.className == "forest") {
-    theme.innerText = "Beach";
+    theme.innerHTML = "<span>Beach</span>";
     theme.className = "beach";
     audioTheme = document.querySelector("#beach");
     content.className = "content beach-bg";
+    if (active == true) {
+      stopAudio(forest);
+      startAudio(audioTheme);
+    }
   } else {
-    theme.innerText = "Zen";
+    theme.innerHTML = "<span>Zen</span>";
     theme.className = "zen";
     audioTheme = document.querySelector("#zen");
     content.className = "content";
+    if (active == true) {
+      stopAudio(beach);
+      startAudio(audioTheme);
+    }
   }
 });
 
-btn.addEventListener("click", () => {
+command.addEventListener("click", () => {
   if (active == true) {
     active = false;
     text.innerText = "Get Ready";
     controller.className = "controller";
-    btn.innerText = "Start Again";
+    command.innerText = "Start Again";
     clearTimeout(hold);
     clearTimeout(breathOut);
     clearInterval(controllerLoop);
     clearInterval(timeLoop);
     stopAudio(audioTheme);
+    resume.style.display = "block";
   } else {
     active = true;
     counter = 0;
@@ -91,16 +103,31 @@ btn.addEventListener("click", () => {
     minutes.innerText = "00 :";
     seconds.innerText = "00";
     breathCount.innerHTML = "";
-    btn.innerText = "Stop";
-    title.className = "title small-title";
-    img.className = "img small-img";
+    command.innerText = "Stop";
+    // title.className = "title small-title";
+    // img.className = "img small-img";
+    timer.style.visibility = "visible";
+    resume.style.display = "none";
+
     breathAnimation();
     startTimer();
     startAudio(audioTheme);
     startLoop();
   }
   pointerContainer.classList.toggle("rotate");
-  btn.classList.toggle("active");
+  command.classList.toggle("active");
+});
+
+resume.addEventListener("click", () => {
+  active = true;
+  command.innerText = "Stop";
+  breathAnimation();
+  startAudio(audioTheme);
+  startTimer();
+  startLoop();
+  pointerContainer.classList.toggle("rotate");
+  command.classList.toggle("active");
+  resume.style.display = "none";
 });
 
 const startLoop = () => {
