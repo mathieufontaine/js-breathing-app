@@ -12,7 +12,7 @@
 }
 
 body {
-  background: cornflowerblue url("img/background.jpg") no-repeat center
+  background: cornflowerblue url("../img/background.jpg") no-repeat center
     center/cover;
   font-family: "Raleway", sans-serif;
   color: white;
@@ -85,11 +85,11 @@ a {
 }
 
 .forest-bg {
-  background: url("img/forest.jpg") no-repeat center center/cover;
+  background: url("../img/forest.jpg") no-repeat center center/cover;
 }
 
 .beach-bg {
-  background: url("img/beach.jpg") no-repeat center center/cover;
+  background: url("../img/beach.jpg") no-repeat center center/cover;
 }
 
 .text {
