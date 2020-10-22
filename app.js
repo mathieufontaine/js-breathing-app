@@ -8,6 +8,11 @@ const img = document.querySelector(".img");
 const timer = document.querySelector(".timer");
 const minutes = document.querySelector(".minutes");
 const seconds = document.querySelector(".seconds");
+const theme = document.querySelector("#theme");
+const content = document.querySelector(".content");
+const overlay = document.querySelector(".overlay");
+
+console.log(theme.className);
 
 const totalTime = 11000;
 const breatheTime = (totalTime / 5) * 2;
@@ -19,6 +24,24 @@ let breathOut;
 let controllerLoop;
 let totalSeconds;
 let timeLoop;
+let audioTheme = document.querySelector("#zen");
+
+const enableLoop = audio => {
+  audio.loop = true;
+  audio.load();
+};
+
+enableLoop(forest);
+enableLoop(zen);
+
+const startAudio = audio => {
+  audio.play();
+};
+
+const stopAudio = audio => {
+  audio.pause();
+  audio.currentTime = 0;
+};
 
 const breathAnimation = () => {
   text.innerText = "Breath In";
@@ -32,6 +55,21 @@ const breathAnimation = () => {
   }, breatheTime);
 };
 
+theme.addEventListener("click", () => {
+  if (theme.className == "forest") {
+    theme.innerText = "Zen";
+    theme.className = "zen";
+    audioTheme = document.querySelector("#zen");
+    content.className = "content";
+  } else {
+    theme.innerText = "Forest";
+    theme.className = "forest";
+    audioTheme = document.querySelector("#forest");
+    content.className = "content forest-bg";
+    overlay.style.opacity = 0.2;
+  }
+});
+
 btn.addEventListener("click", () => {
   if (active == true) {
     active = false;
@@ -42,6 +80,7 @@ btn.addEventListener("click", () => {
     clearTimeout(breathOut);
     clearInterval(controllerLoop);
     clearInterval(timeLoop);
+    stopAudio(audioTheme);
   } else {
     active = true;
     counter = 0;
@@ -52,8 +91,9 @@ btn.addEventListener("click", () => {
     btn.innerText = "Stop";
     title.className = "title small-title";
     img.className = "img small-img";
-    startTimer();
     breathAnimation();
+    startTimer();
+    startAudio(audioTheme);
     startLoop();
   }
   pointerContainer.classList.toggle("rotate");
