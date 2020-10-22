@@ -10,21 +10,26 @@
 </head>
 
 <body>
-    <div class="title">
-        <h1>Control your Breath</h1>
+    <div class="title-container">
+        <h1 class="title">Control your Breath</h1>
     </div>
     <div class="overlay"></div>
     <div class="container">
-        <div class="timer">
-            <div class="circle"></div>
-            <p class="text">Get Ready</p>
+        <div class="controller">
+            <div class="circle">
+                <p class="text">Préparez-vous</p>
+                <p class="timer"></p>
+            </div>
             <div class="pointer-container">
                 <div class="pointer"></div>
             </div>
             <div class="gradient-circle"></div>
         </div>
-        <div class="btn">Start</div>
-        <img src="img/undraw_Meditation.svg" alt="">
+        <div class="infos">
+            <div class="breath-count"></div>
+            <div class="btn">Commencer</div>
+            <img class="img" src="img/undraw_Meditation.svg" alt="">
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
