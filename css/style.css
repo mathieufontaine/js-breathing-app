@@ -241,10 +241,16 @@ a {
 }
 
 .btn:hover {
-  background: var(--secondary);
+  transform: scale(1.1);
+}
+.command:hover {
+  background: #1f2f75;
 }
 
 .active {
+  background: var(--secondary);
+}
+.command.active:hover {
   background: var(--secondary);
 }
 
