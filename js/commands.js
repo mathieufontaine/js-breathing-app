@@ -6,12 +6,17 @@ const breathCount = document.querySelector(".breath-count");
 const command = document.querySelector(".command");
 const resume = document.querySelector(".resume");
 const controller = document.querySelector(".controller");
-const text = document.querySelector(".text");
+// const text = document.querySelector(".text");
 const content = document.querySelector(".content");
 const overlay = document.querySelector(".overlay");
 const timer = document.querySelector(".timer");
 const minutes = document.querySelector(".minutes");
 const seconds = document.querySelector(".seconds");
+const breathTexts = document.querySelectorAll(".text");
+const breathready = document.querySelector(".ready");
+const breathin = document.querySelector(".breathin");
+const breathhold = document.querySelector(".breathhold");
+const breathout = document.querySelector(".breathout");
 
 const totalTime = 11000;
 const breatheTime = (totalTime / 5) * 2;
@@ -31,7 +36,8 @@ let audioTheme = document.querySelector("#zen");
 export const commandHandler = () => {
   if (active == true) {
     active = false;
-    text.innerText = "Get Ready";
+    // text.innerText = "Get Ready";
+    resetText();
     controller.className = "controller";
     command.innerText = "Start Again";
     clearTimeout(hold);
@@ -39,7 +45,7 @@ export const commandHandler = () => {
     clearInterval(controllerLoop);
     clearInterval(timeLoop);
     stopAudio(audioTheme);
-    resume.style.display = "block";
+    resume.style.visibility = "visible";
   } else {
     active = true;
     counter = 0;
@@ -51,7 +57,7 @@ export const commandHandler = () => {
     // title.className = "title small-title";
     // img.className = "img small-img";
     timer.style.visibility = "visible";
-    resume.style.display = "none";
+    resume.style.visibility = "hidden";
     breathAnimation();
     startTimer();
     startAudio(audioTheme);
@@ -70,7 +76,7 @@ export const resumeHandler = () => {
   startLoop();
   pointerContainer.classList.toggle("rotate");
   command.classList.toggle("active");
-  resume.style.display = "none";
+  resume.style.visibility = "hidden";
 };
 
 export const themeHandler = () => {
@@ -115,14 +121,34 @@ const startLoop = () => {
   }, totalTime);
 };
 
+const resetText = () => {
+  breathTexts.forEach(text => {
+    text.classList.remove("show");
+  });
+  breathready.classList.add("show");
+};
+
 const breathAnimation = () => {
-  text.innerText = "Breath In";
+  // text.innerText = "Breath In";
+  breathout.classList.remove("show");
+  breathready.classList.remove("show");
+  breathin.classList.add("show");
   controller.className = "controller grow";
+
   hold = setTimeout(() => {
-    text.innerText = "Hold";
+    breathin.classList.remove("show");
+    breathhold.classList.add("show");
+    // text.classList.remove('hide');
+    // text.innerText = "Hold";
+    // text.classList.add('hide');
+
     breathOut = setTimeout(() => {
-      text.innerText = "Breath Out";
+      breathhold.classList.remove("show");
+      breathout.classList.add("show");
       controller.className = "controller shrink";
+      // text.classList.remove('hide');
+      // text.innerText = "Breath Out";
+      // text.classList.add('hide');
     }, holdTime);
   }, breatheTime);
 };

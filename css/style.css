@@ -94,6 +94,22 @@ a {
 
 .text {
   font-size: 24px;
+  transition: all 1s ease-in-out;
+  /* visibility: hidden; */
+  opacity: 0;
+  /* height: 100%; */
+  /* line-height: 100%; */
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.text.show {
+  opacity: 1;
+  /* visibility: visible; */
 }
 
 .timer {
@@ -255,7 +271,7 @@ a {
 }
 
 .resume {
-  display: none;
+  visibility: hidden;
   background: var(--secondary);
 }
 
@@ -265,6 +281,7 @@ a {
   padding-top: 0;
   font-weight: 700;
   text-align: center;
+  height: 100px;
 }
 
 .breath-count span {
