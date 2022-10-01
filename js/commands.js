@@ -7,7 +7,7 @@ const command = document.querySelector(".command");
 const resume = document.querySelector(".resume");
 const controller = document.querySelector(".controller");
 const content = document.querySelector(".content");
-const timer = document.querySelector(".timer");
+// const timer = document.querySelector(".timer");
 const minutes = document.querySelector(".minutes");
 const seconds = document.querySelector(".seconds");
 const breathTexts = document.querySelectorAll(".text");
@@ -44,6 +44,9 @@ export const commandHandler = () => {
     clearInterval(timeLoop);
     stopAudio(activeAudio);
     resume.style.visibility = "visible";
+    if (counter > 0) {
+      breathCount.style.padding = "20px";
+    }
   } else {
     active = true;
     counter = 0;
@@ -51,8 +54,9 @@ export const commandHandler = () => {
     minutes.innerText = "00 :";
     seconds.innerText = "00";
     breathCount.innerHTML = "";
+    breathCount.style.padding = "0px";
     command.innerText = "Stop";
-    timer.style.visibility = "visible";
+    // timer.style.visibility = "visible";
     resume.style.visibility = "hidden";
     breathAnimation();
     startTimer();
@@ -94,8 +98,11 @@ const startLoop = () => {
   controllerLoop = setInterval(() => {
     breathAnimation();
     counter += 1;
+    if (counter > 0) {
+      breathCount.style.padding = "12px";
+    }
     breathCount.innerHTML = `<p><span>${counter}</span></p><p>${
-      counter === 1 ? "Breathings" : "Breathings"
+      counter > 1 ? "Breathings" : "Breathing"
     } completed</p>`;
   }, totalTime);
 };

@@ -13,59 +13,61 @@
     <title>Breathing App</title>
 </head>
 
-<body class="content">
-    <div class="title-container">
+<body>
+    <div class="title_container">
         <h1 class="title">Control your Breath</h1>
         <!-- <div id="theme" class="zen"><span>Zen</span></div> -->
     </div>
-    <button class="btn_theme">Change theme</button>
-
     <div class="timer_container">
+        <button class="btn_theme">Change theme</button>
         <div class="timer">
-            <p class="minutes"></p>
-            <p class="seconds"></p>
+            <p class="minutes">00 :</p>
+            <p class="seconds">00</p>
+        </div>
+    </div>
+    <div class="content">
+
+        <div class="container">
+            <div class="controller">
+                <div class="circle">
+                    <p class="text ready show">Get Ready</p>
+                    <p class="text breathin">Breath In</p>
+                    <p class="text breathhold">Hold</p>
+                    <p class="text breathout">Breath Out</p>
+                </div>
+                <div class="pointer-container">
+                    <div class="pointer"></div>
+                </div>
+                <div class="gradient-circle"></div>
+            </div>
+            <div class="infos">
+                <div class="breath-count"></div>
+                <div class="btn command">Start</div>
+                <div class="btn resume">Continue</div>
+                <img class="img" src="img/undraw_Meditation.svg" alt="meditation-img">
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="controller">
-            <div class="circle">
-                <p class="text ready show">Get Ready</p>
-                <p class="text breathin">Breath In</p>
-                <p class="text breathhold">Hold</p>
-                <p class="text breathout">Breath Out</p>
-            </div>
-            <div class="pointer-container">
-                <div class="pointer"></div>
-            </div>
-            <div class="gradient-circle"></div>
-        </div>
-        <div class="infos">
-            <div class="breath-count"></div>
-            <div class="btn command">Start</div>
-            <div class="btn resume">Continue</div>
-            <img class="img" src="img/undraw_Meditation.svg" alt="meditation-img">
-        </div>
-    </div>
     <div class="footer">
-        <div class="container">
-            <div class="credits">
-                <p>Developped By</p>
-                <p><a href="https://www.linkedin.com/in/mathieu-fontaine/">
-                        <span>Mathieu Fontaine</span>
-                    </a>
-                </p>
-            </div>
-            <div class="logos">
-                <a href="https://www.linkedin.com/in/mathieu-fontaine/" target="_blank">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <!-- <div class="container"> -->
+        <div class="credits">
+            <p>Developped By</p>
+            <p><a href="https://www.linkedin.com/in/mathieu-fontaine/">
+                    <span>Mathieu Fontaine</span>
                 </a>
-                <a href="https://github.com/mathieufontaine" target="_blank">
-                    <i class="fa fa-github" aria-hidden="true"></i>
-                </a>
-            </div>
-            <p>® Copyright 2020</p>
+            </p>
         </div>
+        <div class="logos">
+            <a href="https://www.linkedin.com/in/mathieu-fontaine/" target="_blank">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/mathieufontaine" target="_blank">
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+        </div>
+        <p>® Copyright 2020</p>
+        <!-- </div> -->
     </div>
     <audio id="zen" src="sound/zen.m4a"></audio>
     <audio id="forest" src="sound/forest.wav"></audio>
