@@ -11,6 +11,10 @@
   --secondary: rgb(234, 112, 131);
 }
 
+html {
+  font-size: 15px;
+}
+
 body {
   background: url("../img/background.jpg") no-repeat center center/cover;
   font-family: "Raleway", sans-serif;
@@ -36,7 +40,7 @@ a {
 /* title */
 
 .title {
-  font-size: 32px;
+  font-size: 2rem;
   padding: 10px;
   color: white;
   margin: auto;
@@ -63,12 +67,12 @@ a {
   justify-content: space-around;
   width: 80%;
   position: relative;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
 }
 
 .btn_theme {
-  font-size: 20px;
+  font-size: 1.2rem;
   width: 15%;
   padding: 20px;
   cursor: pointer;
@@ -94,7 +98,7 @@ a {
 /* Timer */
 
 .text {
-  font-size: 24px;
+  font-size: 2rem;
   transition: all 1s ease-in-out;
   opacity: 0;
   text-align: center;
@@ -118,7 +122,7 @@ a {
 
 .timer {
   color: var(--secondary);
-  font-size: 38px;
+  font-size: 2rem;
   font-weight: 500;
   padding: 12px;
   display: flex;
@@ -145,24 +149,22 @@ a {
   z-index: -1;
 }
 
-.controller {
+.controler {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 300px;
-  /* max-height: 60vh; */
   width: 300px;
   margin: auto;
   position: relative;
   transform: scale(1);
-  /* transform: translateY(30%); */
 }
 
-.controller.grow {
+.controler.grow {
   animation: grow 4.4s linear forwards;
 }
 
-.controller.shrink {
+.controler.shrink {
   animation: shrink 4.4s linear forwards;
 }
 
@@ -236,9 +238,9 @@ a {
   border: 0;
   background: var(--primary);
   color: #fff;
-  border-radius: 16px;
-  padding: 20px 30px;
-  font-size: 20px;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  width: 200px;
   text-transform: uppercase;
   font-weight: bold;
   outline: none;
@@ -277,17 +279,18 @@ a {
 }
 
 .breath-count p {
-  font-size: 20px;
+  font-size: 1.2rem;
 }
+
 .breath-count span {
   color: var(--secondary);
-  font-size: 40px;
+  font-size: 2rem;
   /* font-weight: 700; */
 }
 
 .img {
-  width: 400px;
-  margin: 0 auto;
+  width: 300px;
+  margin: 20px auto 0;
   /* z-index: -1;
   bottom: 0;
   position: absolute; */
@@ -299,7 +302,7 @@ a {
   height: 60px;
   width: 100%;
   padding: 5px;
-  font-size: 15px;
+  font-size: 1rem;
   color: var(--primary);
   background-color: rgba(255, 255, 255, 0.5);
   display: grid;
@@ -330,7 +333,7 @@ a {
   justify-content: center;
 }
 .footer .fa {
-  font-size: 20px;
+  font-size: 1.5rem;
   margin-left: 10px;
   transition: 0.5s ease;
 }
@@ -356,13 +359,13 @@ a {
     transform: scale(1);
   }
   to {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
 }
 
 @keyframes shrink {
   from {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
   to {
     transform: scale(1);
@@ -385,17 +388,16 @@ a {
     width: auto;
   }
   .breath-count {
-    margin-top: 40px;
+    margin-top: 10px;
   }
   .img {
     display: none;
   }
-  .controller {
+  .controler {
     transform: scale(0.7);
   }
   .footer {
     font-size: 12px;
-    height: 7vh;
   }
   .footer .container {
     justify-content: space-around;

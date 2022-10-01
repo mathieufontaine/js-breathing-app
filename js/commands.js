@@ -5,7 +5,7 @@ const pointerContainer = document.querySelector(".pointer-container");
 const breathCount = document.querySelector(".breath-count");
 const command = document.querySelector(".command");
 const resume = document.querySelector(".resume");
-const controller = document.querySelector(".controller");
+const controler = document.querySelector(".controler");
 const content = document.querySelector(".content");
 // const timer = document.querySelector(".timer");
 const minutes = document.querySelector(".minutes");
@@ -22,7 +22,7 @@ const holdTime = totalTime / 5;
 
 let active = false;
 let counter = 0;
-let controllerLoop;
+let controlerLoop;
 let hold;
 let breathOut;
 let timeLoop;
@@ -36,17 +36,14 @@ export const commandHandler = () => {
   if (active == true) {
     active = false;
     resetText();
-    controller.className = "controller";
+    controler.className = "controler";
     command.innerText = "Start Again";
     clearTimeout(hold);
     clearTimeout(breathOut);
-    clearInterval(controllerLoop);
+    clearInterval(controlerLoop);
     clearInterval(timeLoop);
     stopAudio(activeAudio);
     resume.style.visibility = "visible";
-    if (counter > 0) {
-      breathCount.style.padding = "20px";
-    }
   } else {
     active = true;
     counter = 0;
@@ -95,13 +92,13 @@ export const themeHandler = () => {
 };
 
 const startLoop = () => {
-  controllerLoop = setInterval(() => {
+  controlerLoop = setInterval(() => {
     breathAnimation();
     counter += 1;
     if (counter > 0) {
-      breathCount.style.padding = "12px";
+      breathCount.style.padding = "10px 15px";
     }
-    breathCount.innerHTML = `<p><span>${counter}</span></p><p>${
+    breathCount.innerHTML = `<p><span>${counter}</span> ${
       counter > 1 ? "Breathings" : "Breathing"
     } completed</p>`;
   }, totalTime);
@@ -118,14 +115,14 @@ const breathAnimation = () => {
   breathout.classList.remove("show");
   breathready.classList.remove("show");
   breathin.classList.add("show");
-  controller.className = "controller grow";
+  controler.className = "controler grow";
   hold = setTimeout(() => {
     breathin.classList.remove("show");
     breathhold.classList.add("show");
     breathOut = setTimeout(() => {
       breathhold.classList.remove("show");
       breathout.classList.add("show");
-      controller.className = "controller shrink";
+      controler.className = "controler shrink";
     }, holdTime);
   }, breatheTime);
 };
